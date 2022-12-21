@@ -1,0 +1,51 @@
+{% load static %}
+{% load bootstrap_icons %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device.width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>My Store</title>
+    <link rel="stylesheet" href="{%  static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{%  static 'style.css' %}">
+
+
+
+</head>
+
+
+<body>
+
+    {% if user_form.errors %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <div id="form_errors">
+                {% for key, value in user_form.errors.items %}
+                    <strong>{{ value }}</strong>
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" class="fadeIn fourth" style="background-color:#7952b3" value=" Submit ">
+    </form>
+
+           
+
+
+
+ 
+    
+
+       <script src="/static/js/bootstrap.bundle.min.js"></script>
+
+</body>
+{% endblock %}
+</html>

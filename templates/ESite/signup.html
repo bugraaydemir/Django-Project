@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device.width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>My Store</title>
+    <link rel="stylesheet" href="{%  static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{%  static 'style.css' %}">
+
+
+
+</head>
+<body style="max-height:500px;">{% csrf_token %}
+
+    <form method="POST" action="" class="Register-form" style="max-width:500px; margin:5% auto 60% 40%;">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+            {{ message }}
+         </li>
+         {% endfor %}
+        </ul>
+        {% endif %}
+     
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="uname">Username</label>
+                <input type="text" class="form-control" id="Username" name="Username" placeholder="Enter a Username" >
+
+            </div>
+            <div class="form-group col-md-6">
+                <label for="email">E-Mail</label>
+                <input type="email" class="form-control" id="Email"name="Email" placeholder="Enter your Email">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="fname">First Name</label>
+                <input type="text" class="form-control" id="first_name" name="first_name">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lname">Last Name</label>
+                <input type="text" class="form-control" id="last_name" name="last_name">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="password-auth">Password2</label>
+                <input type="password" class="form-control" id="Password2" placeholder="Enter your password again">
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="dateofbirth">Date Of Birth</label>
+            <input type="date" class="form-control" id="dateofbirth">
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                    Remember me.
+                </label>
+            </div>
+        </div>
+        <button type="submit"  class="btn btn-primary">Sign Up</button>
+        <div class="form-group">
+            <a href="/login">Already have an account?</a>        
+        </div>
+
+    </form>
+    
+</body>
+
+</html>

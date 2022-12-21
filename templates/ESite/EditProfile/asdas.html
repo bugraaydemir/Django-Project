@@ -1,0 +1,56 @@
+{% load static %}
+{% load bootstrap_icons %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device.width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>My Store</title>
+    <link rel="stylesheet" href="{%  static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{%  static 'style.css' %}">
+
+
+
+</head>
+
+
+<body>
+
+    </div>
+    <div class="row justify-content-center center" style="background:rgb(255, 255, 255); height:500px; margin:12rem auto">
+        <div class="col-4 "style="background:rgb(218, 238, 228); max-width:150px;text-align:center;">
+            <br>
+            <a href="+">My Orders</a>
+                <br>
+                <br>
+                <a href="+">Order History</a>
+                <br>
+                <br>
+                <a href="+">Wishlist</a>
+                <br>
+                <br>
+                <a href="/usersettings">User Settings</a>      
+         </div>
+        <div class="col-8"style="background:rgb(163, 162, 165); font-color:black; text-align:center;">
+            <br><br>
+            <p> Your Email Address is {{user.email}}</p>
+            <a href="/email-change">Change Your Email Adress</a>
+            <br><br><hr><br><br>
+            <p> Your Password is **********</p>
+            <a href="/password-change">Change Password</a>
+            <br><br><hr><br><br>
+           
+                <form action="" method="POST">                
+                    {% csrf_token %}
+                    {{form.as_p}}                
+                </form>
+            
+    <br><br><br>
+{% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+{% load static %}
+{% load bootstrap_icons %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device.width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>My Store</title>
+    <link rel="stylesheet" href="{%  static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{%  static 'style.css' %}">
+
+
+
+</head>
+
+
+<body>
+
+    </div>
+    <div class="row justify-content-center center" style="background:rgb(255, 255, 255); height:500px; margin:12rem auto">
+        <div class="col-4 "style="background:rgb(218, 238, 228); max-width:150px;text-align:center;">
+            <br>
+            <a href="+">My Orders</a>
+                <br>
+                <br>
+                <a href="+">Order History</a>
+                <br>
+                <br>
+                <a href="+">Wishlist</a>
+                <br>
+                <br>
+                <a href="/usersettings/">User Settings</a>      
+         </div>
+        <div class="col-8"style="background:rgb(163, 162, 165); font-color:black;">
+            <form action="" method="POST">
+                {% csrf_token %}
+               
+                {{ user.email }}
+                {{ form.as_p }}
+                <button type="submit">submit</button>
+              
+            </form>
+        
+        </div>
+           
+
+
+
+    </div>
+    
+{% endblock %}
+
+</body>
+
+</html>

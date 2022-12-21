@@ -1,0 +1,166 @@
+{% extends "ESite/base.html" %}
+{% load bootstrap_icons %}
+{% block content %}
+
+<main>{% for item in edit_landing_page %}
+<div class="row align-items-center" style="text-align:center;">
+
+    <img src="{{item.Cascade_Image}}"class="img-fluid mx-auto d-block" alt="Responsive image">
+      <h3 class="Intro-text" style="position:absolute;color:white;
+      left: 50%;
+      transform: translate(-50%, -0%);">Enhance Camping Experience With X</h3>
+    </div>
+    </div>
+
+</div>
+
+{%endfor%}
+
+<br>
+
+
+{% if user.is_authenticated %}
+<h3>Hello {{ user.username }} !!!</h3>    
+{% endif %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+    {{ message }}
+ </li>
+ {% endfor %}
+</ul>
+{% endif %}
+  <!-- // Product Display // -->
+  <div class="col-sm" style="left:30px;top:60px;">
+
+  <h4 class="overlay" style="top:10%">Best Sellers</h4>
+    </div>
+  <section class="text-center mb-4"style="padding:60px;">
+
+    <div class="row wow fadeIn" style="border:5px solid rgb(79, 69, 69); border-radius: 10px 10px 10px 10px;">
+
+      {% for item in bestseller %}
+      <div class="col-lg-3 col-mb-4" style="padding-left:20px;padding-right:20px; margin-top:1.5rem; margin-bottom:1.5rem;">
+      
+        <div class="card" style="align-items:center;border:5px solid rgb(79, 69, 69); border-radius: 10px 10px 10px 10px;;">
+  
+          <div class="view overlay">
+            <br>
+            <img class="card-img-top" style="width:154px; height:154px;" src="{{ item.Images.url }}">
+            <a href="{{ item.get_absolute_url }}">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+  
+          <div class="card-body">
+            <a href="" class="grey-text">
+              <h5>{{ object.get_category_display }}</h5>
+            </a>
+            <h5>
+              <strong>
+                <a href="{{ item.get_absolute_url }}" class="dark-grey-text">{{ item.title }}
+                </a>
+              </strong>
+            </h5>
+            <h4 class="font-weight-bold blue-text">
+              <strong>$
+                {% if item.discount_price %}
+                {{ item.discount_price }}
+                {% else %}
+                {{ item.price }}
+                {% endif %}
+                <br>
+               
+  
+  
+  
+              </strong>
+            </h4>
+            <a href="{{ item.get_add_to_cart_url }}" class="btn btn-dark">Add to Cart</a>
+
+          </div>
+  
+        </div>
+  
+      </div>
+  
+      {% endfor %}
+
+    </div>
+
+
+<br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="col-sm" style="right:43rem;">
+
+      <a  href='/store/' style="color:black; font-size:1.5rem;">Store</a>
+        </div>
+  <div class="row wow fadeIn" style="border:5px solid rgb(79, 69, 69);border-radius: 10px 10px 10px 10px;">
+
+    {% for item in object_list|slice:"0:4" %}
+    <div class="col-lg-3 col-mb-4" style="padding-left:20px;padding-right:20px; margin-top:1.5rem; margin-bottom:1.5rem;">
+    
+    
+      <div class="card" style="align-items:center;border:5px solid rgb(79, 69, 69);border-radius: 10px 10px 10px 10px;">
+
+        <div class="view overlay">
+          <br>
+          <img class="card-img-top" style="width:154px; height:154px;" src="{{ item.Images.url }}">
+          <a href="{{ item.get_absolute_url }}">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <div class="card-body">
+          <a href="" class="grey-text">
+            <h5>{{ object.get_category_display }}</h5>
+          </a>
+          <h5>
+            <strong>
+              <a href="{{ item.get_absolute_url }}" class="dark-grey-text">{{ item.title }}
+              </a>
+            </strong>
+          </h5>
+
+          <h4 class="font-weight-bold blue-text">
+            <strong>$
+              {% if item.discount_price %}
+              {{ item.discount_price }}
+              {% else %}
+              {{ item.price }}
+              {% endif %}
+              <br>
+             
+
+
+
+            </strong>
+          </h4>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  {%endfor%}
+  </div>
+
+</section>
+
+ 
+</main>
+
+{% endblock content %}

@@ -1,0 +1,81 @@
+{% extends "ESite/base.html" %}
+{% load static %}
+{% load bootstrap_icons %}
+{% block content %}
+
+
+
+<br><br><br>
+<main>
+  <hr>
+  <div class ="row">
+    <div class = "col">
+      <li class="links" style="text-align:center;" >
+        <a class="store-links" href = "/store/">ALL</a>
+        <a class="store-links" href = '/Camping-Tents/'>Camping Tents</a>
+        <a class="store-links" href = '/Survival-Gadgets/' >Survival Gadgets</a>
+        <a class="store-links" href = "" >Clothing</a>
+        <a class="store-links" href = '/Cooking/'>Cooking</a>
+      </li>
+    </div>
+  </div>
+  <hr>
+
+  <section class="text-center">
+    <div class="row gx-5 justify-content-center">
+        {% for item in clothing %}
+      <div class="col-lg-3 col-md-4">
+     
+        <br>
+
+        <div class="card" style="align-items:center;">
+
+          <div class="view overlay">
+            <img class="card-img-top" style="width:154px; height:154px;" src="{{ item.Images.url }}">
+            <a href="{{ item.get_absolute_url }}">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="" class="grey-text">
+            </a>
+            <h5>
+              <strong>
+                <a href="{{ item.get_absolute_url }}" class="dark-grey-text">{{ item.title }}
+                </a>
+              </strong>
+            </h5>
+
+            <h4 class="font-weight-bold blue-text">
+              <strong>$
+                {% if item.discount_price %}
+                {{ item.discount_price }}
+                {% else %}
+                {{ item.price }}
+                {% endif %}
+                <br>
+               
+
+
+
+              </strong>
+            </h4>
+            <a href="{{ item.get_add_to_cart_url }}" class="btn btn-dark">Add to Cart</a>
+
+          </div>
+
+        </div>
+
+      </div>
+      
+
+      {%endfor%}
+    </div>
+  </section>
+
+
+</main>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+
+{% endblock content %}

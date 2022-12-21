@@ -1,0 +1,70 @@
+{% extends "ESite/base.html" %}
+{% load static %}
+{% load bootstrap_icons %}
+
+{% block content %}
+<main>
+
+  
+    <section class="text-center">
+<br>
+        <div class="item-picture align-items-center" >
+          <img class="card-img-top" style="width:480px; height:360px;border:5px solid black; border-radius: 40px;" src="{{ item.Images.url }}">
+        </div>
+        <br><br>
+        <div class="item-colorr" id="item-colorr">Choose A Color:
+          <select name ="item-colorr" class="item-colorr" id="item-colorr">
+            {%if item.Color %}
+            <option>{{item.Color}}</option>
+            {%endif%}
+            {%if item.Color2 %}
+            <option>{{item.Color2}}</option>
+            {%endif%}
+            {%if item.Color3 %}
+            <option>{{item.Color3}}</option>
+            {%endif%}
+            {%if item.Color4 %}
+            <option>{{item.Color4}}</option>
+            {%endif%}
+            {%if item.Color5 %}
+            <option>{{item.Color5}}</option>
+            {%endif%}
+            {%if item.Color6 %}
+            <option>{{item.Color6}}</option>
+            {%endif%}
+         
+
+          </select>
+        </div>
+        <br>
+          <input type = "number" name = "item-quantity-field" class="item-quantity-field" id="item-quantity-field" style="border:1px solid black;border-radius:40px; text-align: center;">
+          
+
+          <a href = "{{ item.get_add_to_cart_url }}">Add To Cart</a>
+        <br><br>
+        <div class="col lg">
+        <div class="item-description">
+          {{item.description}}
+        </div>
+      </div>
+      </div>
+      <form  method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+
+    </section>
+  
+  </main>
+
+            
+   
+
+{% endblock content %}
+
+
+
+
+
+

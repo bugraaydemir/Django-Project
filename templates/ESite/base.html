@@ -1,0 +1,112 @@
+{% load static %}
+{% load bootstrap_icons %}
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device.width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>My Store</title>
+    <link rel="stylesheet" href="{%  static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{%  static 'style.css' %}">
+
+
+
+</head>
+
+
+
+<body >
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark button-right" id="button-row">
+    <div class="container xl">
+        <div class="navbar-brand">
+            <a class="navbar-brand">MyStore</a>
+            <div class="roww ">
+                <div class="btn-group" role="group" aria-label="site-nav-btn">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown">Shopping
+                        Cart</button>
+                    <ul class="dropdown-menu " style=" background:white;">
+                        <li>
+                       
+                        <div class= container> 
+                            {% for order_item in object.items.all %}<div class="row">
+                                <div class="col-sm" style="width:100px;">
+                            <img src= "{{ order_item.item.Images.url }}" style="max-width:80px;max-height:68px;">
+                                </div>
+                            <div class="col-sm" style= "text-align:left;">
+                                <p> {{ order_item.item.title }}</p>
+                                <hr>
+                                <p> ${{ order_item.item.price }}</p>
+                                <p>Current Amount:{{ order_item.quantity }}</p>
+                            </div>
+                            <hr>
+                        </div>
+                        <button class="btn btn-dark" style="display:block;margin:0 auto;">
+                        <a href="{% url 'ESite_App:remove_from_cart' order_item.item.slug %}" style="color: white; text-decoration: none;">Remove Item</a>
+                        </button>
+                        <hr>
+                        <br>
+                        {% endfor %}
+                       
+                        </li>  
+                       
+                        <hr>
+                        <a href="/order/" type="button" class="btn btn-dark" style="display:block;margin:0 auto;">Checkout</button>
+                        <hr>
+                    </ul>
+
+                    <button type="button" class="btn btn-secondary dropdown-toggle"
+                        data-bs-toggle="dropdown">Menu</button>
+                    <ul class="dropdown-menu menu" style="right:0rem ;">
+                        <li><a class="dropdown-item" href="#">Home</a></li>
+                        {% if user.is_not_authenticate %}
+                        <li><a class="dropdown-item" href="/signup">Signup</a></li>
+                        <li><a class="dropdown-item" href="/login">Login</a></li>
+                        {% endif %}
+                        <li><a class="dropdown-item" href="/store/">Store</a></li>
+                    </ul>
+                    {% if user.is_authenticated %}
+                    <button type="button" class="btn btn-secondary dropdown-toggle"
+                    data-bs-toggle="dropdown">
+                    {% bs_icon 'person' %}
+                  </button>
+                   
+                <ul class="dropdown-menu menu" style="right:0 ;">
+                    <li><a class="dropdown-item" href="#">Home</a></li>
+                    <li><a class="dropdown-item" href="/myprofile/">My Profile</a></li>
+                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                </ul>
+                     {% endif %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+
+
+  </section>
+
+    {% if messages %}
+        {% for message in messages %}
+        <div class="message" id="message" role="alert">
+          {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+
+    {% block content %}
+    {% endblock content %}
+
+    {% block extra_body %}
+    {% endblock %}
+
+    {% include "ESite/scripts.html" %}
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+
+{% extends "ESite/base.html" %}
+
+{% block content %}
+  <main>
+    <div class="container">
+
+    <div class="table-responsive text-nowrap">
+      <div class="row ">
+      <div class="col">
+      <h1>Billing Address </h1>
+       <form action="" method="POST">                
+        {% csrf_token %}
+        {{form.as_p}} 
+        <button type="submit">Submit</button>               
+    </form>
+  </div>
+  <div class="col">
+
+    {% for item in shippingaddress %}
+    <div class="table-responsive text-nowrap">
+      <h1>Shipping Address </h1>
+      <div class="col">
+      <label for = "firstname">First Name
+      <input type = "text" value="{{ user.first_name }}" readonly> 
+    </label>
+      </div>
+      <div class="col">
+    <label for = "lastname">Last Name
+      <input type = "text" value="{{ user.last_name }}" readonly> 
+    </label>
+      </div>
+      <div class="col">
+    <label for = "City">City
+      <input type = "text" value="{{ item.city }}" readonly> 
+    </label>
+      </div>
+      <div class="col">
+    <label for = "Zipcode">Zipcode
+      <input type = "text" value="{{ item.zipcode }}" readonly> 
+    </label>
+      </div>
+      <div class="col">
+    <label for = "Email Address">Email Address
+      <input type = "text" value="{{ user.email }}" readonly> 
+    </label>
+      </div>
+      <div class="col">
+    <label for = "Address">Address
+      <input type = "text" value="{{ item.address }}" style="height:200px; width: 250px;" readonly >
+    </label>
+      </div>
+
+
+       
+{%endfor%}
+</div>
+</div>
+  </main>
+
+
+{% endblock content %}
+
