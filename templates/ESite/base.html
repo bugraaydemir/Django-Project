@@ -22,7 +22,7 @@
     <div class="container xl">
         <div class="navbar-brand">
             <a class="navbar-brand">MyStore</a>
-            <div class="roww ">
+            <div class="roww "style="margin:0 -2rem;">
                 <div class="btn-group" role="group" aria-label="site-nav-btn">
                     <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown">Shopping
                         Cart</button>
@@ -47,22 +47,21 @@
                         </button>
                         <hr>
                         <br>
+
                         {% endfor %}
-                       
                         </li>  
-                       
-                        <hr>
-                        <a href="/order/" type="button" class="btn btn-dark" style="display:block;margin:0 auto;">Checkout</button>
-                        <hr>
+                        <button type="button" class="btn btn-dark" style="display:block;margin:0 auto;">
+                            <a href="/order/">Check Out</a>
+                        </button>
                     </ul>
 
                     <button type="button" class="btn btn-secondary dropdown-toggle"
                         data-bs-toggle="dropdown">Menu</button>
                     <ul class="dropdown-menu menu" style="right:0rem ;">
-                        <li><a class="dropdown-item" href="#">Home</a></li>
+                        <li><a class="dropdown-item" href="/home/">Home</a></li>
                         {% if user.is_not_authenticate %}
-                        <li><a class="dropdown-item" href="/signup">Signup</a></li>
-                        <li><a class="dropdown-item" href="/login">Login</a></li>
+                        <li><a class="dropdown-item" href="/signup/">Signup</a></li>
+                        <li><a class="dropdown-item" href="/login/">Login</a></li>
                         {% endif %}
                         <li><a class="dropdown-item" href="/store/">Store</a></li>
                     </ul>
