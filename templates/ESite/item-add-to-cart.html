@@ -7,52 +7,91 @@
 
   
     <section class="text-center">
+<br>   
+
+<div class="row" id="image-slideshow">
+  <div class="col">
+ <div class="item-description">
+  <h4>Product Name</h4>
+  <p> {{item.description}}</p>
+
+  <h6>Color Options</h6>
+
+  <select name ="item-colorr" class="item-colorr" id="item-colorr">
+    {%if item.Color %}
+    <option>{{item.Color}}</option>
+    {%endif%}
+    {%if item.Color2 %}
+    <option>{{item.Color2}}</option>
+    {%endif%}
+    {%if item.Color3 %}
+    <option>{{item.Color3}}</option>
+    {%endif%}
+    {%if item.Color4 %}
+    <option>{{item.Color4}}</option>
+    {%endif%}
+    {%if item.Color5 %}
+    <option>{{item.Color5}}</option>
+    {%endif%}
+    {%if item.Color6 %}
+    <option>{{item.Color6}}</option>
+    {%endif%}
+ 
+
+  </select>
+  <br><br>
+  <a class= "addtocart" type="submit" href = "{{ item.get_add_to_cart_url }}">Add To Cart</a>
+ 
+</div>
+</div>
+
+  <div class="col">
+  <div class="mySlides">
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <img class=card-image-top   src= "{{item.Images.url}}" style="width:300px; height:300px;border:2px solid black;border-radius: 10px 10px 10px 10px;" >
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  </div>
+  <div class="mySlides">
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <img class=card-image-top   src= "{{item.Image_1.url}}" style="width:300px; height:300px;border:2px solid black;border-radius: 10px 10px 10px 10px;" >
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  </div>
+    <div class="mySlides">
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+
+      <img class=card-image-top   src= "{{item.Image_2.url}}" style="width:300px; height:300px;border:2px solid black;border-radius: 10px 10px 10px 10px;" >
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    </div>
+
+
+      <div class="mySlides">
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+
+    <img class=card-image-top   src= "{{item.Image_3.url}}" style="width:300px; height:300px;border:2px solid black;border-radius: 10px 10px 10px 10px;" >
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+</div>
 <br>
-        <div class="item-picture align-items-center" >
-          <img class="card-img-top" style="width:480px; height:360px;border:5px solid black; border-radius: 40px;" src="{{ item.Images.url }}">
-        </div>
-        <br><br>
-        <div class="item-colorr" id="item-colorr">Choose A Color:
-          <select name ="item-colorr" class="item-colorr" id="item-colorr">
-            {%if item.Color %}
-            <option>{{item.Color}}</option>
-            {%endif%}
-            {%if item.Color2 %}
-            <option>{{item.Color2}}</option>
-            {%endif%}
-            {%if item.Color3 %}
-            <option>{{item.Color3}}</option>
-            {%endif%}
-            {%if item.Color4 %}
-            <option>{{item.Color4}}</option>
-            {%endif%}
-            {%if item.Color5 %}
-            <option>{{item.Color5}}</option>
-            {%endif%}
-            {%if item.Color6 %}
-            <option>{{item.Color6}}</option>
-            {%endif%}
-         
+</div>
 
-          </select>
-        </div>
-        <br>
-          <input type = "number" name = "item-quantity-field" class="item-quantity-field" id="item-quantity-field" style="border:1px solid black;border-radius:40px; text-align: center;">
+   
+  </div>
+  
+   
+
+</div>
+<br>
+<br>
+
           
-
-          <a href = "{{ item.get_add_to_cart_url }}">Add To Cart</a>
         <br><br>
-        <div class="col lg">
-        <div class="item-description">
-          {{item.description}}
-        </div>
+      
+
       </div>
-      </div>
-      <form  method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Submit">
-    </form>
+ 
 
     </section>
   
@@ -62,7 +101,6 @@
    
 
 {% endblock content %}
-
 
 
 

@@ -29,7 +29,12 @@ class Item(models.Model):
     title = models.CharField(max_length=100)
     price = models.FloatField()
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=20, default=None)
-    Images = models.ImageField(upload_to = 'static/images')
+    Images = models.ImageField(upload_to = 'static/images', default=None)
+    Image_1 = models.ImageField(upload_to = 'static/images', default=None)
+    Image_2= models.ImageField(upload_to = 'static/images', default=None)
+    Image_3= models.ImageField(upload_to = 'static/images', default=None)
+
+
     slug = models.SlugField(max_length=140, default=None)
     description = models.TextField(max_length=140, default=None)
     bestseller = models.BooleanField(default=False)

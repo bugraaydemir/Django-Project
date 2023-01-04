@@ -24,8 +24,7 @@
             <a class="navbar-brand">MyStore</a>
             <div class="roww "style="margin:0 -2rem;">
                 <div class="btn-group" role="group" aria-label="site-nav-btn">
-                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown">Shopping
-                        Cart</button>
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown">{% bs_icon 'handbag-fill' %}</button>
                     <ul class="dropdown-menu " style=" background:white;">
                         <li>
                        
@@ -38,6 +37,7 @@
                                 <p> {{ order_item.item.title }}</p>
                                 <hr>
                                 <p> ${{ order_item.item.price }}</p>
+                                <p> {{order_item.item.Color}}</p>
                                 <p>Current Amount:{{ order_item.quantity }}</p>
                             </div>
                             <hr>
@@ -56,7 +56,7 @@
                     </ul>
 
                     <button type="button" class="btn btn-secondary dropdown-toggle"
-                        data-bs-toggle="dropdown">Menu</button>
+                        data-bs-toggle="dropdown">{% bs_icon 'list' %}</button>
                     <ul class="dropdown-menu menu" style="right:0rem ;">
                         <li><a class="dropdown-item" href="/home/">Home</a></li>
                         {% if user.is_not_authenticate %}

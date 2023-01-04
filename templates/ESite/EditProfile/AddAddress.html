@@ -31,14 +31,14 @@
             </button>
         </div>
     {% endif %}
-    <form method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" class="fadeIn fourth" style="background-color:#7952b3" value=" Submit ">
-    </form>
-
-           
-
+    <h2> Add Shipping Address</h2>
+    <div class="col" style ="margin:0 auto;border-radius:20px 20px 20px 20px; border:2px solid black; width:500px;">
+        <form method="POST" style="width:100px;"">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" class="fadeIn fourth" style="background-color:#7952b3" value=" Submit ">
+        </form>
+    </div>   
 
 
  

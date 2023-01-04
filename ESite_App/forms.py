@@ -61,15 +61,6 @@ class ShippingAddressForm(forms.ModelForm):
 
         model = ShippingAddress
         exclude =['user']
- 
-
-class AddToCartForm(forms.ModelForm):
-    color = forms.CharField(widget=forms.Select)
-    quantity = forms.CharField(widget=forms.NumberInput)
-    class Meta:
-        model = OrderItem
-        db_table = 'ecommerce.esite_app_orderitem'
-        fields = ['color', 'quantity']
 
         
 class BillingAddressForm(forms.ModelForm):

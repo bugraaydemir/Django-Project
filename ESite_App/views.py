@@ -6,7 +6,7 @@ from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.views import View, generic
 import urllib.request as urllib
-from ESite_App.forms import AddToCartForm, BillingAddressForm, UpdatePassword, UpdateUserAddressForm, UpdateUserForm,ShippingAddressForm
+from ESite_App.forms import  BillingAddressForm, UpdatePassword, UpdateUserAddressForm, UpdateUserForm,ShippingAddressForm
 from .models import BackgroundImage, BillingAddress, Item, LandingPageEdit, Order, OrderItem, ShippingAddress
 from django.contrib import messages
 from urllib3 import request
@@ -93,7 +93,7 @@ class ItemView(DetailView) :
       context = super().get_context_data(**kwargs)
       context['object'] = Order.objects.get(user=self.request.user, ordered=False)
       context['background_image'] = BackgroundImage.objects.all()
-      context['form'] = AddToCartForm
+     
   
 
       return context 
@@ -205,7 +205,7 @@ def login_request(request):
 def logout_request(request):
 	logout(request)
 	messages.info(request, "You have successfully logged out.") 
-	return redirect('/store')
+	return redirect('/home/')
 
 
 @login_required(login_url='/login')
