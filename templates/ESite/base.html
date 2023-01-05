@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device.width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <title>My Store</title>
+   
+
     <link rel="stylesheet" href="{%  static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{%  static 'style.css' %}">
 
@@ -18,17 +20,19 @@
 
 
 <body >
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark button-right" id="button-row">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark button-right" id="button-row" style="position:sticky">
     <div class="container xl">
         <div class="navbar-brand">
-            <a class="navbar-brand">MyStore</a>
+            {% for item in logo %}
+            <img src = "{{item.Logo}}" style="width:100px;height:100px;">
+            {%endfor%}
             <div class="roww "style="margin:0 -2rem;">
-                <div class="btn-group" role="group" aria-label="site-nav-btn">
+                <div class="btn-group-navbar" role="group" aria-label="site-nav-btn">
                     <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown">{% bs_icon 'handbag-fill' %}</button>
                     <ul class="dropdown-menu " style=" background:white;">
                         <li>
                        
-                        <div class= container> 
+                        <div class= "container"> 
                             {% for order_item in object.items.all %}<div class="row">
                                 <div class="col-sm" style="width:100px;">
                             <img src= "{{ order_item.item.Images.url }}" style="max-width:80px;max-height:68px;">
@@ -36,8 +40,8 @@
                             <div class="col-sm" style= "text-align:left;">
                                 <p> {{ order_item.item.title }}</p>
                                 <hr>
-                                <p> ${{ order_item.item.price }}</p>
-                                <p> {{order_item.item.Color}}</p>
+                                <p> Price: ${{ order_item.item.price }}</p>
+                                <p> Color: {{order_item.item.Color}}</p>
                                 <p>Current Amount:{{ order_item.quantity }}</p>
                             </div>
                             <hr>
@@ -73,7 +77,7 @@
                    
                 <ul class="dropdown-menu menu" style="right:0 ;">
                     <li><a class="dropdown-item" href="#">Home</a></li>
-                    <li><a class="dropdown-item" href="/myprofile/">My Profile</a></li>
+                    <li><a class="dropdown-item" href="/usersettings/">My Profile</a></li>
                     <li><a class="dropdown-item" href="/logout">Logout</a></li>
                 </ul>
                      {% endif %}

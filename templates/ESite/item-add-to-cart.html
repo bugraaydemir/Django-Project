@@ -12,7 +12,8 @@
 <div class="row" id="image-slideshow">
   <div class="col">
  <div class="item-description">
-  <h4>Product Name</h4>
+  <h4>{{item.title}}</h4>
+  
   <p> {{item.description}}</p>
 
   <h6>Color Options</h6>
@@ -40,8 +41,10 @@
 
   </select>
   <br><br>
-  <a class= "addtocart" type="submit" href = "{{ item.get_add_to_cart_url }}">Add To Cart</a>
- 
+  <h5>${{item.price}}</h5>
+  <button class="addtocart">
+  <a type="submit" href = "{{ item.get_add_to_cart_url }}">Add To Cart</a>
+</button>
 </div>
 </div>
 

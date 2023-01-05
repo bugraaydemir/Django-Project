@@ -7,7 +7,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import View, generic
 import urllib.request as urllib
 from ESite_App.forms import  BillingAddressForm, UpdatePassword, UpdateUserAddressForm, UpdateUserForm,ShippingAddressForm
-from .models import BackgroundImage, BillingAddress, Item, LandingPageEdit, Order, OrderItem, ShippingAddress
+from .models import BackgroundImage, BillingAddress, Item, LandingPageEdit, Logo, Order, OrderItem, ShippingAddress
 from django.contrib import messages
 from urllib3 import request
 from django.contrib.auth.models import User
@@ -28,11 +28,14 @@ class StoreView(ListView) :
     context = super().get_context_data(**kwargs)
     context['cart'] = OrderItem.objects.filter(user=self.request.user)
     context['background_image'] = BackgroundImage.objects.all()
+
     return context 
   def get_context_data(self, **kwargs):
     
     try:
       context = super().get_context_data(**kwargs)
+      context['logo'] = Logo.objects.all()
+
       context['object'] = Order.objects.get(user=self.request.user, ordered=False)
       return context 
     except ObjectDoesNotExist:
@@ -93,8 +96,8 @@ class ItemView(DetailView) :
       context = super().get_context_data(**kwargs)
       context['object'] = Order.objects.get(user=self.request.user, ordered=False)
       context['background_image'] = BackgroundImage.objects.all()
-     
-  
+      context['logo'] = Logo.objects.all()
+
 
       return context 
     except ObjectDoesNotExist:
@@ -114,7 +117,7 @@ class LandingPageView(ListView) :
       context = super().get_context_data(**kwargs)
       context['bestseller'] = Item.objects.filter(bestseller=True)
       context['object'] = Order.objects.get(user = self.request.user, ordered = False)
-
+      context['logo'] = Logo.objects.all()
       context['edit_landing_page'] = LandingPageEdit.objects.all()
       context['background_image'] = BackgroundImage.objects.all()
       return context 

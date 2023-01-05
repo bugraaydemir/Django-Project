@@ -1,8 +1,9 @@
 
-.btn-group {
+.btn-group-navbar {
 
     position: relative;
-    left: 65rem;
+    left: 35rem;
+    background: brown;
 }
 
 .menu {
@@ -10,7 +11,7 @@
     top: 3rem;
     left: 6.5rem;
     text-align: center;
-    background:yellow;
+    background:white;
 }
 
 .cart {
@@ -18,7 +19,11 @@
     background-color: black;
 
 }
+.dropdown-menu{
+  left:1rem;
+  background:white;
 
+}
 body{
     background: white;
 }
@@ -88,6 +93,7 @@ body{
     padding:5px;
     top:10%;
     border-radius:5px 5px 5px 5px;
+    width:200px;
   }
   /* Hover effect for addtocart button */
   .addtocart:hover{

@@ -2,19 +2,18 @@
 {% load bootstrap_icons %}
 {% block content %}
 
-<main>{% for item in edit_landing_page %}
+<main>
 <div class="row align-items-center" style="text-align:center;">
+  {% for item in edit_landing_page %}
+  <img src = "{{item.Cascade_Image}}" style="width:1600px;height:600  px;">
+  {%endfor%}
+  <h3 class="Intro-text" style="position:absolute;color:white;
+   left: 50%;
 
-    <img src="{{item.Cascade_Image}}"class="img-fluid mx-auto d-block" alt="Responsive image">
-      <h3 class="Intro-text" style="position:absolute;color:white;
-      left: 50%;
-      transform: translate(-50%, -0%);">Enhance Camping Experience With X</h3>
-    </div>
-    </div>
+   transform: translate(-50%, -0%);">Enhance Camping Experience With X</h3>
+ </div>
 
-</div>
 
-{%endfor%}
 
 <br>
 
@@ -32,6 +31,13 @@
  {% endfor %}
 </ul>
 {% endif %}
+<br><br><br><br>
+  <!-- // Logo Display // -->
+
+
+ </div>
+
+</div>
   <!-- // Product Display // -->
   <div class="col-sm" style="left:30px;top:60px;">
 
@@ -103,7 +109,7 @@
 
 
 
-    <div class="col-sm" style="right:43rem;">
+    <div class="col-sm" style="position:relative;right:43rem;">
 
       <a  href='/store/' style="color:black; font-size:1.5rem;">Store</a>
         </div>

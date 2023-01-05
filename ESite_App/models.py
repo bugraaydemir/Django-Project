@@ -25,14 +25,18 @@ def get_absolute_url(self):
 class BackgroundImage(models.Model):
  Background_Image = models.ImageField()
 
+
+class Logo(models.Model):
+    Logo = models.ImageField()
+
 class Item(models.Model):
     title = models.CharField(max_length=100)
     price = models.FloatField()
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=20, default=None)
     Images = models.ImageField(upload_to = 'static/images', default=None)
-    Image_1 = models.ImageField(upload_to = 'static/images', default=None)
-    Image_2= models.ImageField(upload_to = 'static/images', default=None)
-    Image_3= models.ImageField(upload_to = 'static/images', default=None)
+    Image_1 = models.ImageField(upload_to = 'static/images', default=None,blank=True)
+    Image_2= models.ImageField(upload_to = 'static/images', default=None, blank =True)
+    Image_3= models.ImageField(upload_to = 'static/images', default=None, blank =True)
 
 
     slug = models.SlugField(max_length=140, default=None)
